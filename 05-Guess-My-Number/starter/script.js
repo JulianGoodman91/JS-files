@@ -5,7 +5,10 @@ let message = document.querySelector('.message');
 let number = document.querySelector('.number');
 let scoreSelect = document.querySelector('.score');
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
+let highScoreEl = document.querySelector('.highscore');
+
 let score = 20;
+let highScore = 0;
 
 document.querySelector('.again').addEventListener('click', () => {
     score = 20;
@@ -23,13 +26,18 @@ document.querySelector('.check').addEventListener('click', () => {
     
     if(!guess) {
         message.textContent = "No Guess Given, please try again."
+
     } else if (guess === secretNumber) {
         message.textContent = "Well done, you got it right!"
-        score++;
-        scoreSelect.textContent = score;
         document.querySelector('body').style.backgroundColor = '#60b347';
         number.style.width = '30rem';
         number.textContent = secretNumber;
+
+        if (score > highScore) {
+            highScore = score
+            highScoreEl.textContent = highScore;
+        }
+
     } else if (guess > secretNumber) {
         if  (score > 1) {
             message.textContent = "Your guess was too high...";
@@ -39,6 +47,7 @@ document.querySelector('.check').addEventListener('click', () => {
             message.textContent = "You Lost the game, better luck next time!";
             scoreSelect.textContent = 0;
         }
+
     } else if (guess < secretNumber) {
         if (score > 1) {
             message.textContent = "Your guess was too low..."
