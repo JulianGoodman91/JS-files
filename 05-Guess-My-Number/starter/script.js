@@ -7,7 +7,7 @@ let scoreSelect = document.querySelector('.score');
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let highScoreEl = document.querySelector('.highscore');
 
-let score = 200;
+let score = 20;
 let highScore = 0;
 
 document.querySelector('.again').addEventListener('click', () => {
