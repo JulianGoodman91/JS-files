@@ -38,19 +38,11 @@ document.querySelector('.check').addEventListener('click', () => {
             highScoreEl.textContent = highScore;
         }
 
-    } else if (guess > secretNumber) {
-        if  (score > 1) {
-            message.textContent = "Your guess was too high...";
-            score--;
-            scoreSelect.textContent = score;
-        } else {
-            message.textContent = "You Lost the game, better luck next time!";
-            scoreSelect.textContent = 0;
-        }
 
-    } else if (guess < secretNumber) {
-        if (score > 1) {
-            message.textContent = "Your guess was too low..."
+        // Guess is different
+    } else if (guess !== secretNumber) {
+        if  (score > 1) {
+            message.textContent = guess > secretNumber ? "Your guess was too high..." : "Your guess was too low...";
             score--;
             scoreSelect.textContent = score;
         } else {
@@ -58,4 +50,4 @@ document.querySelector('.check').addEventListener('click', () => {
             scoreSelect.textContent = 0;
         }
     }
-})
+});
